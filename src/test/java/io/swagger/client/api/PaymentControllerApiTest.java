@@ -16,17 +16,19 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.model.PaymentDTO;
 import org.junit.Test;
+
+import io.swagger.client.model.*;
+
+import java.math.BigDecimal;
+
 import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 /**
  * API tests for PaymentControllerApi
  */
-@Ignore
+
 public class PaymentControllerApiTest {
 
     private final PaymentControllerApi api = new PaymentControllerApi();
@@ -42,8 +44,37 @@ public class PaymentControllerApiTest {
      */
     @Test
     public void addUserUsingPOSTTest() throws ApiException {
-        PaymentDTO payment = null;
-        PaymentDTO response = api.addUserUsingPOST(payment);
+        PaymentDTO payment = new PaymentDTO();
+        
+        /*CreditorAccountDTO creditorAccount = new CreditorAccountDTO();
+    	creditorAccount.setDestinationDNI("76000000");
+    	creditorAccount.setIdentification("00100");
+    	creditorAccount.setName("SANTANDER - SOPROLE");    	
+		payment.setCreditorAccount(creditorAccount);
+        
+		DebtorAccountDTO debtorAccount = new DebtorAccountDTO();
+		debtorAccount.setDestinationDNI("8000000");
+		debtorAccount.setIdentification("03700");
+		debtorAccount.setName("SANTANDER");
+		
+		payment.setDebtorAccount(debtorAccount);
+    	payment.setId("3F2504E0-4F89-11D3-9A0C-0305E82C3301");
+    	
+    	InstructedAmountDTO instructedAmount = new InstructedAmountDTO();
+    	instructedAmount.amount(BigDecimal.valueOf(500000));
+    	instructedAmount.setCurrency(BigDecimal.valueOf(152));
+    	
+		payment.setInstructedAmount(instructedAmount);
+    	payment.setStatus(io.swagger.client.model.PaymentDTO.StatusEnum.REJECTED);
+		
+		*/
+		
+		
+		PaymentDTO response = api.addUserUsingPOST(payment);
+        
+        
+        
+        System.out.println("hola " + response);
 
         // TODO: test validations
     }
@@ -58,9 +89,9 @@ public class PaymentControllerApiTest {
      */
     @Test
     public void findByIdUsingGETTest() throws ApiException {
-        String id = null;
+        String id = "3F2504E0-4F89-11D3-9A0C-0305E82C3301";
         PaymentDTO response = api.findByIdUsingGET(id);
-
+        System.out.println("GET " + response);
         // TODO: test validations
     }
     
@@ -74,9 +105,17 @@ public class PaymentControllerApiTest {
      */
     @Test
     public void updateUsingPOSTTest() throws ApiException {
-        PaymentDTO payment = null;
-        PaymentDTO response = api.updateUsingPOST(payment);
+        PaymentDTO payment = new PaymentDTO(); 
+        
+        
+    	payment.setId("3F2504E0-4F89-11D3-9A0C-0305E82C3301");
+    	
 
+    	payment.setStatus(io.swagger.client.model.PaymentDTO.StatusEnum.APPROVED);
+        
+        
+        PaymentDTO response = api.updateUsingPOST(payment);
+        System.out.println("UPDATE " + response);
         // TODO: test validations
     }
     
